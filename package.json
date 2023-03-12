@@ -1,0 +1,29 @@
+{
+	"name": "poke",
+	"version": "0.0.1",
+	"description": "A discord bot.",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/WayneChang65/poke.git"
+	},
+	"keywords": [
+		"discord-js"
+	],
+	"author": {
+		"name": "Wayne Chang"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/WayneChang65/poke/issues"
+	},
+	"homepage": "https://github.com/WayneChang65/poke#readme",
+	"dependencies": {
+		"@discordjs/rest": "^1.0.0",
+		"discord-api-types": "^0.36.2",
+		"discord.js": "^14.7.1"
+	}
+}
