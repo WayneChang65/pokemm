@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'interactionCreate',
 
-	async execute(interaction) {
+	async run(interaction) {
 		// Deconstructed client from interaction object.
 		const { client } = interaction;
 
@@ -19,10 +19,10 @@ module.exports = {
 
 		if (!request) return;
 
-		// A try to execute the interaction.
+		// A try to run the interaction.
 
 		try {
-			await request.execute(interaction);
+			await request.run(interaction);
 		} catch (err) {
 			console.error(err);
 		}

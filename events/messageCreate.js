@@ -13,7 +13,7 @@ const escapeRegex = (string) => {
 
 module.exports = {
 	name: 'messageCreate',
-	async execute(message) {
+	async run(message) {
 		// Declares const to be used.
 
 		const { client, guild, channel, content, author } = message;
@@ -25,7 +25,7 @@ module.exports = {
 			message.content == `<@${client.user.id}>` ||
 			message.content == `<@!${client.user.id}>`
 		) {
-			require('../messages/onMention').execute(message);
+			require('../messages/onMention').run(message);
 			return;
 		}
 
@@ -70,7 +70,7 @@ module.exports = {
 
 		if (command.guildOnly && message.channel.type === ChannelType.DM) {
 			return message.reply({
-				content: "I can't execute that command inside DMs!",
+				content: "I can't run that command inside DMs!",
 			});
 		}
 
@@ -129,13 +129,13 @@ module.exports = {
 
 		// Rest your creativity is below.
 
-		// execute the final command. Put everything above this.
+		// run the final command. Put everything above this.
 		try {
-			command.execute(message, args);
+			command.run(message, args);
 		} catch (error) {
 			console.error(error);
 			message.reply({
-				content: 'There was an error trying to execute that command!',
+				content: 'There was an error trying to run that command!',
 			});
 		}
 	},

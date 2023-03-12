@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'sample',
 
-	async execute(interaction) {
+	async run(interaction) {
 		// Preparation for the autocomplete request.
 
 		const focusedValue = interaction.options.getFocused();

@@ -10,7 +10,7 @@ module.exports = {
 	usage: '[command name]',
 	cooldown: 5,
 
-	execute(message, args) {
+	run(message, args) {
 		const { commands } = message.client;
 
 		// If there are no args, it means it needs whole help command.

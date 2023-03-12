@@ -16,7 +16,7 @@ module.exports = {
 				.setDescription('The specific command to see the info of.')
 		),
 
-	async execute(interaction) {
+	async run(interaction) {
 		let name = interaction.options.getString('command');
 
 		const helpEmbed = new EmbedBuilder().setColor('Random');

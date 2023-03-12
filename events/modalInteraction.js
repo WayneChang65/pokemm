@@ -2,7 +2,7 @@ const { InteractionType } = require('discord-api-types/v10');
 
 module.exports = {
 	name: 'interactionCreate',
-	async execute(interaction) {
+	async run(interaction) {
 		// Deconstructed client from interaction object.
 		const { client } = interaction;
 
@@ -16,14 +16,14 @@ module.exports = {
 		// You can modify the error message at ./messages/defaultModalError.js file!
 
 		if (!command) {
-			await require('../messages/defaultModalError').execute(interaction);
+			await require('../messages/defaultModalError').run(interaction);
 			return;
 		}
 
-		// A try to execute the interaction.
+		// A try to run the interaction.
 
 		try {
-			await command.execute(interaction);
+			await command.run(interaction);
 			return;
 		} catch (err) {
 			console.error(err);

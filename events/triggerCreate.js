@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'messageCreate',
-	async execute(message) {
+	async run(message) {
 		/**
 		 * @description The Message Content of the received message seperated by spaces (' ') in an array, this excludes prefix and command/alias itself.
 		 */
@@ -21,11 +21,11 @@ module.exports = {
 			trigger.name.every(async (name) => {
 				if (triggered) return false;
 
-				// If validated, it will try to execute the trigger.
+				// If validated, it will try to run the trigger.
 
 				if (message.content.includes(name)) {
 					try {
-						trigger.execute(message, args);
+						trigger.run(message, args);
 					} catch (error) {
 						// If triggereds fail, reply back!
 
@@ -33,7 +33,7 @@ module.exports = {
 
 						message.reply({
 							content:
-								'there was an error trying to execute that trigger!',
+								'there was an error trying to run that trigger!',
 						});
 					}
 

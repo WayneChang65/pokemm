@@ -1,13 +1,13 @@
 // "fs" declared is used in reloading command cache of the specified command.
-const fs = require("fs");
+const fs = require('fs');
 
 module.exports = {
-	name: "reload",
-	description: "Reloads a command",
+	name: 'reload',
+	description: 'Reloads a command',
 	args: true,
 	ownerOnly: true,
 
-	execute(message, args) {
+	run(message, args) {
 		const commandName = args[0].toLowerCase();
 
 		const command =
@@ -23,10 +23,12 @@ module.exports = {
 			});
 		}
 
-		const commandFolders = fs.readdirSync("./commands");
+		const commandFolders = fs.readdirSync('./commands');
 
 		const folderName = commandFolders.find((folder) =>
-			fs.readdirSync(`./commands/${folder}`).includes(`${command.name}.js`)
+			fs
+				.readdirSync(`./commands/${folder}`)
+				.includes(`${command.name}.js`)
 		);
 
 		// Deletes current cache of that specified command.
@@ -38,10 +40,9 @@ module.exports = {
 		// Tries Registering command again with new code.
 
 		try {
-
 			const newCommand = require(`../${folderName}/${command.name}.js`);
 
-			// Now registers the command in commands Collection. If it fails, the catch block will be executed.
+			// Now registers the command in commands Collection. If it fails, the catch block will be rund.
 			message.client.commands.set(newCommand.name, newCommand);
 
 			// 🎉 Confirmation sent if reloading was successful!
@@ -49,7 +50,7 @@ module.exports = {
 				content: `Command \`${newCommand.name}\` was reloaded!`,
 			});
 		} catch (error) {
-			// Catch block executes if there is any error in your code. It logs the error in console and also sends back in discord GUI.
+			// Catch block runs if there is any error in your code. It logs the error in console and also sends back in discord GUI.
 
 			console.error(error);
 			message.channel.send({

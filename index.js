@@ -30,15 +30,15 @@ const eventFiles = fs
 	.readdirSync('./events')
 	.filter((file) => file.endsWith('.js'));
 
-// Loop through all files and execute the event when it is actually emmited.
+// Loop through all files and run the event when it is actually emmited.
 for (const file of eventFiles) {
 	const event = require(`./events/${file}`);
 	if (event.once) {
-		client.once(event.name, (...args) => event.execute(...args, client));
+		client.once(event.name, (...args) => event.run(...args, client));
 	} else {
 		client.on(
 			event.name,
-			async (...args) => await event.execute(...args, client)
+			async (...args) => await event.run(...args, client)
 		);
 	}
 }
@@ -205,7 +205,7 @@ const commandJsonData = [
 			Routes.applicationGuildCommands(client_id, test_guild_id),
 
 			/**
-			 * Good advice for global commands, you need to execute them only once to update
+			 * Good advice for global commands, you need to run them only once to update
 			 * your commands to the Discord API. Please comment it again after running the bot once
 			 * to ensure they don't get re-deployed on the next restart.
 			 */
@@ -237,6 +237,18 @@ for (const folder of triggerFolders) {
 		client.triggers.set(trigger.name, trigger);
 	}
 }
+
+// Handle nodejs events
+process.on('unhandledRejection', (error) => {
+	console.log(error);
+});
+process.on('uncaughtException', (error) => {
+	console.log(error);
+});
+process.on('uncaughtExceptionMonitor', (error) => {
+	console.log(error);
+});
+//
 
 // Login into your client application with bot's token.
 

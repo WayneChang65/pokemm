@@ -1,7 +1,7 @@
 module.exports = {
 	id: 'sample',
 
-	async execute(interaction) {
+	async run(interaction) {
 		await interaction.reply({
 			content: 'This was a reply from button handler!',
 		});
