@@ -1,3 +1,4 @@
+const config = require('./config.js');
 const fs = require('fs');
 const {
 	Client,
@@ -8,9 +9,9 @@ const {
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 
-const token = process.env.POKE_TOKEN;
-const client_id = process.env.POKE_BOT_ID;
-const test_guild_id = process.env.POKE_TEST_GUILD_ID;
+const token = config.token;
+const client_id = config.client_id;
+const test_guild_id = config.test_guild_id;
 
 const client = new Client({
 	// Please add all intents you need, more detailed information @ https://ziad87.net/intents/
