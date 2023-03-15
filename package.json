@@ -26,6 +26,7 @@
 		"@waynechang65/fml-consolelog": "^1.1.4",
 		"@waynechang65/pokeiv": "^1.3.0",
 		"discord-api-types": "^0.36.2",
-		"discord.js": "^14.7.1"
+		"discord.js": "^14.7.1",
+		"openai": "^3.2.1"
 	}
 }

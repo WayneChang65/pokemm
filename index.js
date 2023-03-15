@@ -11,7 +11,7 @@ const { Routes } = require('discord-api-types/v9');
 
 const token = config.token;
 const client_id = config.client_id;
-const test_guild_id = config.test_guild_id;
+//const test_guild_id = config.test_guild_id; (Relase的時候用全域模式，測試要用test guild模式)
 
 const client = new Client({
 	// Please add all intents you need, more detailed information @ https://ziad87.net/intents/
@@ -203,7 +203,7 @@ const commandJsonData = [
 			 * 2. Please comment the below (uncommented) line (for guild commands).
 			 */
 
-			Routes.applicationGuildCommands(client_id, test_guild_id),
+			//Routes.applicationGuildCommands(client_id, test_guild_id),
 
 			/**
 			 * Good advice for global commands, you need to run them only once to update
@@ -211,7 +211,7 @@ const commandJsonData = [
 			 * to ensure they don't get re-deployed on the next restart.
 			 */
 
-			// Routes.applicationCommands(client_id)
+			Routes.applicationCommands(client_id),
 
 			{ body: commandJsonData }
 		);
