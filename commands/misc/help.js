@@ -1,3 +1,4 @@
+'use strict';
 const prefix = process.env.POKE_PREFIX;
 
 // Deconstructing EmbedBuilder to create embeds within this command

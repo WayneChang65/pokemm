@@ -1,3 +1,4 @@
+'use strict';
 const config = require('../../config.js');
 const token = config.token;
 const client_id = config.client_id;
