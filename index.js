@@ -6,12 +6,12 @@ const {
 	GatewayIntentBits,
 	Partials,
 } = require('discord.js');
-const { REST } = require('@discordjs/rest');
-const { Routes } = require('discord-api-types/v9');
+// const { REST } = require('@discordjs/rest');
+// const { Routes } = require('discord-api-types/v9');
 
 const token = config.token;
-const client_id = config.client_id;
-const test_guild_id = config.test_guild_id; // (Relase的時候用全域模式，測試要用test guild模式)
+// const client_id = config.client_id;
+// const test_guild_id = config.test_guild_id; // (Relase的時候用全域模式，測試要用test guild模式)
 
 const client = new Client({
 	// Please add all intents you need, more detailed information @ https://ziad87.net/intents/
@@ -184,7 +184,7 @@ for (const module of selectMenus) {
 /**********************************************************************/
 // Registration of Slash-Commands in Discord API
 
-const rest = new REST({ version: '9' }).setToken(token);
+// const rest = new REST({ version: '9' }).setToken(token);
 
 const commandJsonData = [
 	...Array.from(client.slashCommands.values()).map((c) => c.data.toJSON()),
@@ -196,17 +196,17 @@ const commandJsonData = [
 	try {
 		console.log('Started refreshing application (/) commands.');
 
-		await rest.put(
+		//await rest.put(
 			//* 測試的時候打開下面這行程式，動態在特定的guild進行更新slash commands.
 			//* 測試開發完成後，這行mark掉，把下面那一行打開，執行一次更新所有bot所在的guild，
 			//* 然後就可以把下面第二行程式給mark掉，兩行都被mark掉也就代表不用更新slash commands.
 			//* 也就是正常bot運作了。
 			
-			Routes.applicationGuildCommands(client_id, test_guild_id),
+			// Routes.applicationGuildCommands(client_id, test_guild_id),
 			// Routes.applicationCommands(client_id),
 
-			{ body: commandJsonData }
-		);
+		//	{ body: commandJsonData }
+		//);
 		console.log('Successfully reloaded application (/) commands.');
 	} catch (error) {
 		console.error(error);
