@@ -15,7 +15,7 @@ module.exports = {
             message.reply(ERROR_MSG_FORMAT);
             return;
         }
-        const resp = await openai.response(message, 'gpt3');
+        const resp = await openai.response(message, 'gpt35');
         fmlog('sys_msg', [String(message.author.username) + '-' + ask, resp]);
         message.reply(resp);
 	},
