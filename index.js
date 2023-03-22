@@ -186,10 +186,10 @@ for (const module of selectMenus) {
 
 // const rest = new REST({ version: '9' }).setToken(token);
 
-const commandJsonData = [
-	...Array.from(client.slashCommands.values()).map((c) => c.data.toJSON()),
-	...Array.from(client.contextCommands.values()).map((c) => c.data),
-];
+// const commandJsonData = [
+// 	...Array.from(client.slashCommands.values()).map((c) => c.data.toJSON()),
+// 	...Array.from(client.contextCommands.values()).map((c) => c.data),
+// ];
 
 /* 要更新 slash commands 再打開下面程式 */
 (async () => {
