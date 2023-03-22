@@ -6,12 +6,12 @@ const {
 	GatewayIntentBits,
 	Partials,
 } = require('discord.js');
-const { REST } = require('@discordjs/rest');
-const { Routes } = require('discord-api-types/v9');
+// const { REST } = require('@discordjs/rest');
+// const { Routes } = require('discord-api-types/v9');
 
 const token = config.token;
-const client_id = config.client_id;
-//const test_guild_id = config.test_guild_id; (Relase的時候用全域模式，測試要用test guild模式)
+// const client_id = config.client_id;
+// const test_guild_id = config.test_guild_id; // (Relase的時候用全域模式，測試要用test guild模式)
 
 const client = new Client({
 	// Please add all intents you need, more detailed information @ https://ziad87.net/intents/
@@ -184,38 +184,29 @@ for (const module of selectMenus) {
 /**********************************************************************/
 // Registration of Slash-Commands in Discord API
 
-const rest = new REST({ version: '9' }).setToken(token);
+// const rest = new REST({ version: '9' }).setToken(token);
 
-const commandJsonData = [
-	...Array.from(client.slashCommands.values()).map((c) => c.data.toJSON()),
-	...Array.from(client.contextCommands.values()).map((c) => c.data),
-];
+// const commandJsonData = [
+// 	...Array.from(client.slashCommands.values()).map((c) => c.data.toJSON()),
+// 	...Array.from(client.contextCommands.values()).map((c) => c.data),
+// ];
 
+/* 要更新 slash commands 再打開下面程式 */
 (async () => {
 	try {
 		console.log('Started refreshing application (/) commands.');
 
-		await rest.put(
-			/**
-			 * By default, you will be using guild commands during development.
-			 * Once you are done and ready to use global commands (which have 1 hour cache time),
-			 * 1. Please uncomment the below (commented) line to deploy global commands.
-			 * 2. Please comment the below (uncommented) line (for guild commands).
-			 */
+		//await rest.put(
+		//* 測試的時候打開下面這行程式，動態在特定的guild進行更新slash commands.
+		//* 測試開發完成後，這行mark掉，把下面那一行打開，執行一次更新所有bot所在的guild，
+		//* 然後就可以把下面第二行程式給mark掉，兩行都被mark掉也就代表不用更新slash commands.
+		//* 也就是正常bot運作了。
 
-			//Routes.applicationGuildCommands(client_id, test_guild_id),
+		// Routes.applicationGuildCommands(client_id, test_guild_id),
+		// Routes.applicationCommands(client_id),
 
-			/**
-			 * Good advice for global commands, you need to run them only once to update
-			 * your commands to the Discord API. Please comment it again after running the bot once
-			 * to ensure they don't get re-deployed on the next restart.
-			 */
-
-			Routes.applicationCommands(client_id),
-
-			{ body: commandJsonData }
-		);
-
+		//	{ body: commandJsonData }
+		//);
 		console.log('Successfully reloaded application (/) commands.');
 	} catch (error) {
 		console.error(error);
